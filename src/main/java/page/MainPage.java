@@ -21,5 +21,9 @@ public class MainPage extends BasePage {
         return new SearchPage();
     }
 
-
+    // 进入自选页面
+    public OptionalPage gotoOptional() {
+        find(text("自选")).click();
+        return new OptionalPage();
+    }
 }
