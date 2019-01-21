@@ -15,7 +15,7 @@ public class Driver {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "android");
         //desiredCapabilities.setCapability("deviceName", "14375200");
-        desiredCapabilities.setCapability("deviceName", "14375200");
+        desiredCapabilities.setCapability("deviceName", "emulator-5554");
         desiredCapabilities.setCapability("appPackage", "com.xueqiu.android");
         desiredCapabilities.setCapability("appActivity", ".view.WelcomeActivityAlias");
         desiredCapabilities.setCapability("autoGrantPermissions", true);

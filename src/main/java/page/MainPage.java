@@ -31,7 +31,8 @@ public class MainPage extends BasePage {
     }
 
     // 进入自选页面
-    public OptionalPage gotoOptional() {
+    public OptionalPage gotoOptional() throws Exception{
+        Thread.sleep(5000);
         Driver.getCurrentDriver().findElement(By.xpath("//android.widget.TextView[@text='自选']")).click();
         return new OptionalPage();
     }

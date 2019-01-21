@@ -21,14 +21,15 @@ public class OptionalPage extends BasePage {
         return this;
     }
 
-    public OptionalPage removeOptional(String keyword){
-        //By removeStock=text(keyword);
-        //find(removeStock).click();
-        for (WebElement stock : Driver.getCurrentDriver().findElements(By.id("portfolio_stockName"))){
+    public OptionalPage removeOptional(String keyword) throws InterruptedException {
+        By removeStock=text(keyword);
+        find(removeStock).click();
+        /*for (WebElement stock : Driver.getCurrentDriver().findElements(By.id("portfolio_stockName"))){
             if (stock.getText().equals(keyword)){
                 stock.click();
             }
-        }
+        }*/
+        Thread.sleep(3000);
         find(setOptionalButton).click();
         find(removeOptionalButton).click();
         return this;
