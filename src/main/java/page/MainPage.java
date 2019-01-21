@@ -1,4 +1,5 @@
 package page;
+
 import driver.Driver;
 import org.openqa.selenium.By;
 
@@ -8,6 +9,14 @@ public class MainPage extends BasePage {
     public static MainPage start(){
         Driver.start();
         return new MainPage();
+    }
+
+    public static void getPermission(){
+        Driver.getCurrentDriver().findElement(By.xpath("com.xueqiu.android:id/open")).click();
+        Driver.getCurrentDriver().findElement(By.xpath("com.android.packageinstaller:id/permission_allow_button")).click();
+        Driver.getCurrentDriver().findElement(By.xpath("com.android.packageinstaller:id/permission_allow_button")).click();
+        Driver.getCurrentDriver().findElement(By.xpath("com.xueqiu.android:id/agree")).click();
+        Driver.getCurrentDriver().findElement(By.xpath("com.android.packageinstaller:id/permission_allow_button")).click();
     }
 
     public ProfilePage gotoProfile(){
@@ -23,7 +32,7 @@ public class MainPage extends BasePage {
 
     // 进入自选页面
     public OptionalPage gotoOptional() {
-        find(text("自选")).click();
+        Driver.getCurrentDriver().findElement(By.xpath("//android.widget.TextView[@text='自选']")).click();
         return new OptionalPage();
     }
 }

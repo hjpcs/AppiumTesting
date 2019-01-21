@@ -22,8 +22,13 @@ public class OptionalPage extends BasePage {
     }
 
     public OptionalPage removeOptional(String keyword){
-        By removeStock=text(keyword);
-        find(removeStock).click();
+        //By removeStock=text(keyword);
+        //find(removeStock).click();
+        for (WebElement stock : Driver.getCurrentDriver().findElements(By.id("portfolio_stockName"))){
+            if (stock.getText().equals(keyword)){
+                stock.click();
+            }
+        }
         find(setOptionalButton).click();
         find(removeOptionalButton).click();
         return this;

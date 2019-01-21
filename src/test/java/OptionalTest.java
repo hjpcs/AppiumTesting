@@ -16,38 +16,50 @@ public class OptionalTest {
     @BeforeAll
     static void beforeAll(){
         mainPage=MainPage.start();
+        //Driver.getCurrentDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //MainPage.getPermission();
         optionalPage=mainPage.gotoOptional();
     }
 
     @ParameterizedTest
     @CsvSource({
-            "sogo",
-            "alibaba"
+            "搜狗",
+            "阿里巴巴"
     })
     void addOptional(String keyword){
-        optionalPage.addOptional(keyword);
-        optionalPage.back();
-        ArrayList<String> stockName = optionalPage.getStockList();
-        System.out.println("添加"+keyword+"后股票名称列表：");
-        for (String name:stockName){
+        ArrayList<String> stockNameBefore = optionalPage.getStockList();
+        System.out.println("添加"+keyword+"前股票名称列表：");
+        for (String name:stockNameBefore){
             System.out.println(name);
         }
-        assertTrue(stockName.contains(keyword));
+        optionalPage.addOptional(keyword);
+        optionalPage.back();
+        ArrayList<String> stockNameAfter = optionalPage.getStockList();
+        System.out.println("添加"+keyword+"后股票名称列表：");
+        for (String name:stockNameAfter){
+            System.out.println(name);
+        }
+        assertTrue(stockNameAfter.contains(keyword));
     }
 
     @ParameterizedTest()
     @CsvSource({
-            "搜狗",
-            "阿里巴巴"
+            "中国平安",
+            "中兴通讯"
     })
     void removeOptional(String keyword){
-        optionalPage.removeOptional(keyword);
-        optionalPage.back();
-        ArrayList<String> stockName = optionalPage.getStockList();
-        System.out.println("删除"+keyword+"后股票名称列表：");
-        for (String name:stockName){
+        ArrayList<String> stockNameBefore = optionalPage.getStockList();
+        System.out.println("删除"+keyword+"前股票名称列表：");
+        for (String name:stockNameBefore){
             System.out.println(name);
         }
-        assertTrue(!stockName.contains(keyword));
+        optionalPage.removeOptional(keyword);
+        optionalPage.back();
+        ArrayList<String> stockNameAfter = optionalPage.getStockList();
+        System.out.println("删除"+keyword+"后股票名称列表：");
+        for (String name:stockNameAfter){
+            System.out.println(name);
+        }
+        assertTrue(!stockNameAfter.contains(keyword));
     }
 }

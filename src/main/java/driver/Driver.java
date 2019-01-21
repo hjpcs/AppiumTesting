@@ -14,11 +14,13 @@ public class Driver {
     public static void start(){
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "android");
-        desiredCapabilities.setCapability("deviceName", "192.168.152.101:5555");
+        //desiredCapabilities.setCapability("deviceName", "14375200");
+        desiredCapabilities.setCapability("deviceName", "14375200");
         desiredCapabilities.setCapability("appPackage", "com.xueqiu.android");
         desiredCapabilities.setCapability("appActivity", ".view.WelcomeActivityAlias");
         desiredCapabilities.setCapability("autoGrantPermissions", true);
-
+        desiredCapabilities.setCapability("unicodeKeyboard", true);
+        desiredCapabilities.setCapability("resetKeyboard", true);
         URL remoteUrl = null;
         try {
             remoteUrl = new URL("http://127.0.0.1:4723/wd/hub");
@@ -27,7 +29,7 @@ public class Driver {
         }
 
         driver = new AndroidDriver(remoteUrl, desiredCapabilities);
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     public static AndroidDriver<AndroidElement> getCurrentDriver(){
