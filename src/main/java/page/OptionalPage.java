@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class OptionalPage extends BasePage {
     private By searchButton=By.id("action_create_cube"); // 自选页搜索按钮
@@ -45,5 +47,12 @@ public class OptionalPage extends BasePage {
             arrayList.add(stock.getText());
         }
         return arrayList;
+    }
+
+    public List<String> getStockNames() {
+        return Driver.getCurrentDriver().findElements(By.id("portfolio_stockName"))
+                .stream()
+                .map(e->e.getText())
+                .collect(Collectors.toList());
     }
 }
