@@ -14,7 +14,9 @@ public class Driver {
     public static void start(){
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "android");
+        //xiaomi8
         //desiredCapabilities.setCapability("deviceName", "14375200");
+        //Pixel
         desiredCapabilities.setCapability("deviceName", "emulator-5554");
         desiredCapabilities.setCapability("appPackage", "com.xueqiu.android");
         desiredCapabilities.setCapability("appActivity", ".view.WelcomeActivityAlias");

@@ -1,8 +1,6 @@
 package page;
 
 import driver.Driver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -34,6 +32,7 @@ public class SearchPage extends BasePage{
     }
 
     public ArrayList<String> addSelected(){
+        //appium的bug，本来resource-id和resourceId都应该支持，结果只支持了resourceId
         ArrayList<String> array=new ArrayList<String>();
         AndroidElement select=(AndroidElement) find(By.xpath("//*[contains(@resource-id, 'follow') and contains(@resource-id, '_btn')]"));
         array.add(select.getAttribute("resourceId"));
