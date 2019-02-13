@@ -1,0 +1,17 @@
+---
+xueqiu:
+  username: 123
+  password: 456
+appium:
+  app: xueqiu.apk
+  url: http://127.0.0.1:4723/wd/hub
+  wait: 6
+  capabilities:
+    platformName: android
+    deviceName: emulator-5554
+    appPackage: com.xueqiu.android
+    appActivity: .view.WelcomeActivityAlias
+    autoGrantPermissions: true
+    unicodeKeyboard: true
+    resetKeyboard: true
+

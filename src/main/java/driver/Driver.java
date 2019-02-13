@@ -12,8 +12,16 @@ public class Driver {
 
     private static AndroidDriver<AndroidElement> driver;
     public static void start(){
+
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setCapability("platformName", "android");
+
+        GlobalConfig config = GlobalConfig.load("/data/globalConfig.yaml");
+        config.appium.capabilities.keySet().forEach(Key->{
+            Object value = config.appium.capabilities.get(Key);
+            desiredCapabilities.setCapability(Key, value);
+        });
+
+        /*desiredCapabilities.setCapability("platformName", "android");
         //xiaomi8
         //desiredCapabilities.setCapability("deviceName", "14375200");
         //Pixel
@@ -25,16 +33,17 @@ public class Driver {
         //设置输入法
         desiredCapabilities.setCapability("unicodeKeyboard", true);
         //是否重置键盘
-        desiredCapabilities.setCapability("resetKeyboard", true);
+        desiredCapabilities.setCapability("resetKeyboard", true);*/
+
         URL remoteUrl = null;
         try {
-            remoteUrl = new URL("http://127.0.0.1:4723/wd/hub");
+            remoteUrl = new URL(config.appium.url);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
 
         driver = new AndroidDriver(remoteUrl, desiredCapabilities);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(config.appium.wait, TimeUnit.SECONDS);
     }
 
     public static AndroidDriver<AndroidElement> getCurrentDriver(){
