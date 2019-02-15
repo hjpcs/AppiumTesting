@@ -9,8 +9,9 @@ public class GlobalConfig {
 
     public AppiumConfig appium;
     public XueqiuConfig xueqiu;
+    public SearchConfig search;
 
-    static GlobalConfig load(String path){
+    public static GlobalConfig load(String path){
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         try {
             GlobalConfig globalConfig = mapper.readValue(GlobalConfig.class.getResource(path), GlobalConfig.class);
@@ -20,4 +21,5 @@ public class GlobalConfig {
             return null;
         }
     }
+
 }

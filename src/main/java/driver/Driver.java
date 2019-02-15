@@ -21,20 +21,6 @@ public class Driver {
             desiredCapabilities.setCapability(Key, value);
         });
 
-        /*desiredCapabilities.setCapability("platformName", "android");
-        //xiaomi8
-        //desiredCapabilities.setCapability("deviceName", "14375200");
-        //Pixel
-        desiredCapabilities.setCapability("deviceName", "emulator-5554");
-        desiredCapabilities.setCapability("appPackage", "com.xueqiu.android");
-        desiredCapabilities.setCapability("appActivity", ".view.WelcomeActivityAlias");
-        //获取权限
-        desiredCapabilities.setCapability("autoGrantPermissions", true);
-        //设置输入法
-        desiredCapabilities.setCapability("unicodeKeyboard", true);
-        //是否重置键盘
-        desiredCapabilities.setCapability("resetKeyboard", true);*/
-
         URL remoteUrl = null;
         try {
             remoteUrl = new URL(config.appium.url);

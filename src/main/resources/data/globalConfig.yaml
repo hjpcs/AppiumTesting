@@ -14,4 +14,8 @@ appium:
     autoGrantPermissions: true
     unicodeKeyboard: true
     resetKeyboard: true
-
+search:
+  data:
+    alibaba: 阿里巴巴
+    sogo: 搜狗
+    pdd: 拼多多
